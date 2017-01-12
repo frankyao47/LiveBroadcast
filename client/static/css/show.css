@@ -1,0 +1,175 @@
+/*全局布局*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/*高度百分比布局*/
+.video-pane {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.video-pane-head, .video-pane-body {
+    position: relative;
+}
+
+.video-pane-head {
+    height: 40%;
+}
+
+.video-pane-body {    
+    height: 60%;
+}
+
+.video-discuss {
+    position: absolute;
+    height: 100%;
+}
+
+div#video-discuss-like, div#video-discuss-msg, div#video-discuss-pane {
+    position: relative;
+}
+
+div#video-discuss-like {
+    height: 10%;
+}
+
+div#video-discuss-msg {
+    /*height: 75%;*/ height: 90%;
+}
+
+div#video-discuss-pane {
+    height: 15%;
+}
+
+/*点赞栏*/
+div#video-discuss-like {
+    display: table;
+    width: 100%;
+    padding: 5px 10px;
+    background-color: #fafafa;
+    color: #ffb971;
+    font-size: 16px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+#video-discuss-like div{
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle;
+}
+
+#like-button {
+    text-align: right;
+    color: red;
+}
+
+#like-button span {
+    margin-left: 5px;
+    color: #a8a8a8;
+}
+
+/*弹幕栏*/
+div#video-discuss-msg {
+    padding: 10px;
+    overflow: auto;
+}
+
+.video-msg-list {
+    width: 100%;
+}
+
+.video-msg-list li {
+    margin: 10px 0;
+}
+
+li.msg-style-sys {
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+
+li.msg-style-chat div {
+    color: #a8a8a8;
+}
+
+li.msg-style-chat span, li.msg-style-chat p {
+    color: #000000;
+    display: inline-block;
+}
+
+li.msg-style-chat span {
+    padding: 0 10px;
+}
+
+li.msg-style-chat p {
+    margin-top: 4px;
+}
+
+
+/*发送消息栏*/
+#video-discuss-pane {
+    border-top: 1px solid #e3e3e3;
+}
+
+#video-discuss-form {
+    display: table;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+#video-discuss-form div {
+    display: table-cell;
+    padding: 0 5px;
+    height: 100%;
+}
+
+#msg-input {
+    width: 50%;
+}
+
+#msg-input input, #bt-send button {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+#bt-send {
+    width: 20%;
+}
+
+#bt-send button {
+    background-color: #ffb971;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#bt-gift {
+    background: url('/static/img/gift.png') no-repeat center;
+    background-size: 30px 30px;
+    width: 15%;
+}
+
+#bt-tipping {
+    background: url('/static/img/tipping.png') no-repeat center;
+    background-size: 30px 30px;
+    width: 15%;
+}
+
+

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <meta name="rtmp" content="{{channel.playUrlForRtmp}}">
+    <meta name="hls" content="{{channel.playUrlForHls}}">
+    <meta name="groupId" content="{{channel.groupId}}">
+    <title>{{channel.anchorNickname}}的直播间</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/show.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome/css/font-awesome.min.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="video-pane">
+    <!--视频区-->
+    <div class="video-pane-head">
+        <div class="video-play">
+            <div id="video-container">
+            </div>
+         </div>
+    </div>
+
+    <!--讨论区-->
+    <div class="video-pane-body">
+        <!--点赞-->
+        <div id="video-discuss-like">
+            <div>弹幕区</div>
+            <div id="like-button"><i class="fa fa-heart-o"></i><span>1234</span></div>
+        </div>
+
+        <!--弹幕-->
+        <div id="video-discuss-msg">
+            <ul class="video-msg-list" id="video-msg-list">
+                <li class="msg-style-sys"><p>萌新123456进入直播间</p></li>
+                <li class="msg-style-chat">
+                    <div><span>姚方杰</span>说：</div>
+                    <p>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 发信息/打赏/礼物 -->
+        <!-- <div id="video-discuss-pane">
+            <div class="video-discuss-form" id="video-discuss-form">
+                <div id="msg-input"><input type="text" class="video-discuss-input" placeholder="跟主播打个招呼吧~" id="send_msg_text"></div>
+                <div id="bt-send"><button class="video-discuss-button" onclick="onSendMsg()">发送</button></div>
+                <a href="javascript:void(0);" class="video-discuss-
+                face" onclick="showEmotionDialog()"></a>
+                <div id="bt-gift"></div>
+                <div id="bt-tipping"></div>
+            </div>
+            <div class="video-discuss-emotion" id="video-discuss-emotion" style="display: none">
+                <div class="video-emotion-pane">
+                    <ul id="emotionUL">
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<!-- 播放器sdk -->
+<!--[if lt IE 9]>
+<script src="//imgcache.qq.com/open/qcloud/video/vcplayer/libs/es5-shim.js"></script>
+<script src="//imgcache.qq.com/open/qcloud/video/vcplayer/libs/es5-sham.js"></script>
+<![endif]-->
+<script type="text/javascript" src="{{ url_for('static', filename='js/sdk/TcPlayer.js') }}"></script>
+
+<!--引入webim sdk-->
+<script type="text/javascript" src="{{ url_for('static', filename='js/sdk/webim.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/sdk/json2.js') }}"></script>
+<!--TLS web sdk(只用于托管模式，独立模式不用引入)-->
+<script type="text/javascript" src="{{ url_for('static', filename='js/sdk/api.min.js') }}"></script>
+
+<!--webim demo js-->
+<script type="text/javascript" src="{{ url_for('static', filename='js/demo_base.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/demo_group_notice.js') }}"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/show.js') }}"></script>
+{% endblock %}

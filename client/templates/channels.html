@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<!-- 主播端列表，待完善：界面/分页 -->
+
+	<div>
+		<table>
+			<tr>
+				<th>anchorUsername</th>
+				<th>title</th>
+				<th>ifOpen</th>
+				<th>url</th>
+			</tr>
+			{% for channel in channelList %}
+			<tr>
+				<td>{{channel.anchorUsername}}</td>
+				<td>{{channel.title}}</td>
+				<td>{{channel.ifOpen}}</td>
+				<td><a href="/show?rtmp={{channel.playUrlForRtmp}}&m3u8={{channel.playUrlForHls}}&live=true&autoplay=true">播放</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/channels.js') }}"></script>
+{% endblock %}
