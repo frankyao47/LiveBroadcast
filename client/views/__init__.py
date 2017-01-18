@@ -60,6 +60,14 @@ def show(anchorUid):
 
 
 @app.route('/', methods=['GET'])
+# @login_required
+def index():
+    channelList = __get_api(Config["api"]["getChannels"], None,
+                            params={"limit": 12, "offset": 0})
+
+    return render_template("index.html", channelList=channelList)
+
+
 @app.route('/meme', methods=['GET'])
 # @login_required
 def meme():

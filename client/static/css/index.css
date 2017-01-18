@@ -1,0 +1,100 @@
+/*标题*/
+h2.recommend {
+    font-size: 16px;
+    color: #ffb971;
+
+    padding: 10px;
+}
+
+
+/*主播列表*/
+.star-list {
+    padding: .125rem 0 0;
+    margin-bottom: 10px;
+    position: relative
+}
+
+.star-list ul {
+    margin: 0 .125rem;
+}
+
+
+.star-list ul li {
+    float: left;
+    width: 3rem;
+    margin: 0 .125rem .3rem;
+    overflow: hidden;
+    vertical-align: top
+}
+
+.star-list ul li.fix {
+    width: 10rem;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    padding: 0;
+    margin: 0
+}
+
+.star-list ul li a {
+    position: relative;
+    width: 3rem;
+    display: block;
+    text-align: center;
+}
+
+.star-list ul li a .star-cover {
+    width: 3rem;
+    height: 2.25rem;
+    overflow: hidden
+}
+
+.star-list ul li a img {
+    width: 3rem;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+.star-list ul li a .star-nickname {
+    display: block;
+    font-size: .32rem;
+    color: #424242;
+    padding: .106667rem .106667rem 0
+}
+
+.star-list ul li a .star-num {
+    text-align: center;
+    height: .533333rem;
+    font-size: .266667rem;
+    color: #999;
+    line-height: .533333rem
+}
+
+.star-list ul li a .star-num .iconfont {
+    margin-right: .053333rem
+}
+
+.star-list ul li a .star-num strong {
+    font-weight: 200
+}
+
+.star-list ul li a .star-state {
+    color: #fff;
+    position: absolute;
+    border-radius: .533333rem;
+    font-size: .32rem;
+    right: .08rem;
+    top: .08rem;
+    line-height: 1;
+    padding: .08rem;
+    background: rgba(38,38,38,.3);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    z-index: 1
+}
+
+.star-list ul li a: active {
+    background-color: #eceeef
+}

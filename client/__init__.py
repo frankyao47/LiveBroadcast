@@ -15,4 +15,9 @@ login_manager.session_protection = "strong"
 login_manager.init_app(app)
 
 
+# 过滤器
+@app.template_filter('is_url')
+def is_url(s):
+    return str(s).startswith("http://")
+
 from views import *
