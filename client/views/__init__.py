@@ -1,40 +1,16 @@
 # -*- coding: utf-8 -*-
 
-import json
-
-from flask import render_template, abort
+from flask import render_template
 from client.wechatOauth import oauth
-import requests
 
 from client import app
 from client.config import Config
-
-
-def __get_api(url, headers, **kwargs):
-    """
-    API request
-    """
-    default_headers = {"content-type": "application/json"}
-    if headers is not None and isinstance(headers, dict):
-        default_headers.update(headers)
-    try:
-        req = requests.get(Config["endpoint"] + url + '.action', headers=default_headers, **kwargs)
-        resp = json.loads(req.content)
-        errno, result = resp["errno"], resp["result"]
-
-        if not errno:
-            return result
-        else:
-            raise
-    except Exception:
-        raise
-        abort(500, 'API Service is not yet open')
-
+from client.request_api import get_api
 
 @app.route('/show/<int:anchorUid>', methods=['GET'])
 @oauth
 def show(anchorUid):
-    channel = __get_api(Config["api"]["getSingleChannel"], None,
+    channel = get_api(Config["api"]["getSingleChannel"], None,
                         params={"anchorUid": anchorUid})
     # __get_api(Config["api"]["getSingleChannel"], None,
     #           params={"token": "11b422634945c0b03f72101cb3eee1a7", authority: 2})
@@ -46,7 +22,7 @@ def show(anchorUid):
 @app.route('/', methods=['GET'])
 @oauth
 def index():
-    channelList = __get_api(Config["api"]["getChannels"], None,
+    channelList = get_api(Config["api"]["getChannels"], None,
                             params={"limit": 12, "offset": 0})
 
     return render_template("index.html", channelList=channelList)

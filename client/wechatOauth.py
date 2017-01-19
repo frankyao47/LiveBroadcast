@@ -3,6 +3,17 @@
 from flask import session
 import functools
 
+
+def login_server():
+    """登录服务器"""
+    pass
+
+
+def login_tecent_IM():
+    """登录腾讯IM"""
+    pass
+
+
 def oauth(method):
     @functools.wraps(method)
     def warpper(*args, **kwargs):
@@ -18,6 +29,10 @@ def oauth(method):
             "privilege":[
             ]
         }
+
+        login_server()
+        login_tecent_IM()
+
         return method(*args, **kwargs)
 
     return warpper
