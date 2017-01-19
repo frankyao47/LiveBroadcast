@@ -3,7 +3,7 @@
 import json
 
 from flask import render_template, abort
-from flask_login import login_required
+from client.wechatOauth import oauth
 import requests
 
 from client import app
@@ -31,24 +31,8 @@ def __get_api(url, headers, **kwargs):
         abort(500, 'API Service is not yet open')
 
 
-@app.route('/login', methods=['GET'])
-def login():
-    """
-    微信登录跳转，用户同意后依次向私有服务器注册/登录，IM服务器注册/登录
-    """
-    pass
-
-
-@app.route('/listChannels', methods=['GET'])
-# @login_required
-def listChannels():
-    channelList = __get_api(Config["api"]["getChannels"], None,
-                            params={"limit": 10, "offset": 0})
-    return render_template("channels.html", channelList=channelList)
-
-
 @app.route('/show/<int:anchorUid>', methods=['GET'])
-# @login_required
+@oauth
 def show(anchorUid):
     channel = __get_api(Config["api"]["getSingleChannel"], None,
                         params={"anchorUid": anchorUid})
@@ -60,7 +44,7 @@ def show(anchorUid):
 
 
 @app.route('/', methods=['GET'])
-# @login_required
+@oauth
 def index():
     channelList = __get_api(Config["api"]["getChannels"], None,
                             params={"limit": 12, "offset": 0})
@@ -68,10 +52,26 @@ def index():
     return render_template("index.html", channelList=channelList)
 
 
-@app.route('/meme', methods=['GET'])
-# @login_required
-def meme():
-    channelList = __get_api(Config["api"]["getChannels"], None,
-                            params={"limit": 10, "offset": 0})
 
-    return render_template("meme.html", channelList=channelList)
+
+# @app.route('/login', methods=['GET'])
+# def login():
+#     """
+#     微信登录跳转，用户同意后依次向私有服务器注册/登录，IM服务器注册/登录
+#     """
+#     pass
+#
+# @app.route('/listChannels', methods=['GET'])
+# @oauth
+# def listChannels():
+#     channelList = __get_api(Config["api"]["getChannels"], None,
+#                             params={"limit": 10, "offset": 0})
+#     return render_template("channels.html", channelList=channelList)
+#
+# @app.route('/meme', methods=['GET'])
+# # @login_required
+# def meme():
+#     channelList = __get_api(Config["api"]["getChannels"], None,
+#                             params={"limit": 10, "offset": 0})
+#
+#     return render_template("meme.html", channelList=channelList)
