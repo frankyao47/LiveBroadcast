@@ -1,0 +1,3 @@
+function onShowGift() {
+	alert("hah");
+}

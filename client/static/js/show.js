@@ -139,3 +139,4 @@ window.addEventListener("orientationchange", function() {
     var curPlayAudio = null;
     var openEmotionFlag = false; //是否打开过表情
     sdkLogin();
+

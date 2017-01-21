@@ -36,12 +36,16 @@ div#video-discuss-like {
     height: 10%;
 }
 
+div#danmu-panel, div#gift-panel {
+    height: 90%;
+}
+
 div#video-discuss-msg {
-    /*height: 75%;*/ height: 90%;
+    height: 80%;
 }
 
 div#video-discuss-pane {
-    height: 15%;
+    height: 20%;
 }
 
 /*点赞栏*/
@@ -52,6 +56,7 @@ div#video-discuss-like {
     background-color: #fafafa;
     color: #ffb971;
     font-size: 16px;
+    font-weight: bold;
     border-bottom: 1px solid #e3e3e3;
 }
 
@@ -110,6 +115,7 @@ li.msg-style-chat span {
 
 li.msg-style-chat p {
     margin-top: 4px;
+    padding-left: 10px;
 }
 
 
@@ -164,3 +170,7 @@ li.msg-style-chat p {
 }
 
 
+/*礼物栏*/
+#gift-panel {
+    display: none;
+}
