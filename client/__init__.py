@@ -2,10 +2,15 @@
 
 from flask import Flask
 from flask_login import LoginManager
+
 from config import Config
 
 app = Flask(__name__, static_url_path="")
 app.config["SECRET_KEY"] = Config["SECRET_KEY"]
+
+# 微信
+app.config["WECHAT_APPID"] = Config["wechat"]["WECHAT_APPID"]
+app.config["WECHAT_SECRET"] = Config["wechat"]["WECHAT_SECRET"]
 
 # 登录
 login_manager = LoginManager()

@@ -5,6 +5,7 @@ __pycache__/
 
 .idea/
 config.py
+*.txt
 
 # C extensions
 *.so
