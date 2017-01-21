@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import render_template
+from flask import render_template, session
 from client.wechatOauth import oauth
 
 from client import app
@@ -16,7 +16,7 @@ def show(anchorUid):
     #           params={"token": "11b422634945c0b03f72101cb3eee1a7", authority: 2})
     # user = __get_api(Config["api"]["getUserInfo"], None,
     #                  params={"token": "11b422634945c0b03f72101cb3eee1a7"})
-    return render_template("show.html", channel=channel)
+    return render_template("show.html", channel=channel, user=session["user"])
 
 
 @app.route('/', methods=['GET'])
@@ -25,7 +25,7 @@ def index():
     channelList = get_api(Config["api"]["getChannels"], None,
                             params={"limit": 12, "offset": 0})
 
-    return render_template("index.html", channelList=channelList)
+    return render_template("index.html", channelList=channelList, user=session["user"])
 
 
 

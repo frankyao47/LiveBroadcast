@@ -55,12 +55,15 @@ window.addEventListener("orientationchange", function() {
 });
 
 
-//IM相关逻辑
-    //托管模式，应用名称
-    var accountMode = 1;
-    var sdkAppID = 1400021885;
-    var accountType = 9482;
-    var avChatRoomId = getParamsFromMeta("groupId");;
+    //IM相关逻辑
+    //独立模式，应用名称
+    var accountMode = 0;
+    var sdkAppID = 1400021877;
+    var accountType = 9480;
+    var avChatRoomId = getParamsFromMeta("groupId");
+    var identifier = getParamsFromMeta("identifier");
+    var userSig = getParamsFromMeta("userSig");
+    var headurl = getParamsFromMeta("headurl");
 
     var selType = webim.SESSION_TYPE.GROUP; //广播/私聊
     var selToID = avChatRoomId;

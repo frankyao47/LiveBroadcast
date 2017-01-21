@@ -4,6 +4,9 @@
     <meta name="rtmp" content="{{channel.playUrlForRtmp}}">
     <meta name="hls" content="{{channel.playUrlForHls}}">
     <meta name="groupId" content="{{channel.groupId}}">
+    <meta name="identifier" content="{{user.username}}">
+    <meta name="userSig" content="{{user.usersig}}">
+    <meta name="headurl" content="{{user.avatarUrl}}">
     <title>{{channel.anchorNickname}}的直播间</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/show.css') }}">

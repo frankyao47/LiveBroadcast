@@ -7,10 +7,9 @@ from client.config import Config
 from client.request_api import get_api
 
 
-def login_server():
+def login_server(user_info):
     """登录服务器"""
     gender_map = {0: "N", 1: "M", 2: "F"}
-    user_info = session["user_info"]
     params = {
         "weixin": user_info["openid"],
         "avatar": user_info["headimgurl"],
@@ -18,22 +17,15 @@ def login_server():
         "gender": gender_map[int(user_info["sex"])]
 
     }
-    user = get_api(Config["api"]["authForWeixin"], None,
+    session["user"] = get_api(Config["api"]["authForWeixin"], None,
                           params = params)
-
-    return user
-
-
-def login_tecent_IM():
-    """登录腾讯IM"""
-    pass
 
 
 def oauth(method):
     @functools.wraps(method)
     def warpper(*args, **kwargs):
         # test user
-        session["user_info"] = {
+        user_info = {
             "openid": "test123",
             "nickname": "Frank",
             "sex": "1",
@@ -45,8 +37,7 @@ def oauth(method):
             ]
         }
 
-        login_server()
-        login_tecent_IM()
+        login_server(user_info)
 
         return method(*args, **kwargs)
 
