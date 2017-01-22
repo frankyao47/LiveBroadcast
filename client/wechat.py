@@ -13,9 +13,10 @@ def login_server(user_info):
         "weixin": user_info["openid"],
         "avatar": user_info["headimgurl"],
         "nickname": user_info["nickname"],
-        "gender": gender_map[int(user_info["sex"])]
-
+        "gender": gender_map[int(user_info["sex"])],
+        "authority": 2 # 用户
     }
+
     session["user"] = get_api(Config["api"]["authForWeixin"], None,
                           params = params)
 
