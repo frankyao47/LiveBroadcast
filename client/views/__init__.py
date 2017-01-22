@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from flask import render_template, session
-from client.wechat import oauth, oauth_test
+from client.wechat import oauth
 
 from client import app
 from client.config import Config
 from client.request_api import get_api
 
 @app.route('/show/<int:anchorUid>', methods=['GET'])
-@oauth_test
-#@oauth(scope="snsapi_userinfo")
+@oauth(scope="snsapi_userinfo")
 def show(anchorUid):
     channel = get_api(Config["api"]["getSingleChannel"], None,
                         params={"anchorUid": anchorUid})
@@ -18,8 +17,7 @@ def show(anchorUid):
 
 
 @app.route('/', methods=['GET'])
-@oauth_test
-#@oauth(scope="snsapi_userinfo")
+@oauth(scope="snsapi_userinfo")
 def index():
     channelList = get_api(Config["api"]["getChannels"], None,
                             params={"limit": 12, "offset": 0})
