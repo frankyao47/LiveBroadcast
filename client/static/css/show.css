@@ -158,13 +158,13 @@ li.msg-style-chat p {
 }
 
 #bt-gift {
-    background: url('/static/img/gift.png') no-repeat center;
+    background: url('/img/gift.png') no-repeat center;
     background-size: 30px 30px;
     width: 15%;
 }
 
 #bt-tipping {
-    background: url('/static/img/tipping.png') no-repeat center;
+    background: url('/img/tipping.png') no-repeat center;
     background-size: 30px 30px;
     width: 15%;
 }
