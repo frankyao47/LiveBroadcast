@@ -17,8 +17,8 @@ def login_server(user_info):
         "authority": 2 # 用户
     }
 
-    session["user"] = get_api(Config["api"]["authForWeixin"], None,
-                          params = params)
+    session["user_token"] = get_api(Config["api"]["authForWeixin"], None,
+                          params = params)["token"]
 
 # from flask-wechatpy, https://github.com/cloverstd/flask-wechatpy/blob/master/flask_wechatpy/__init__.py
 
@@ -31,7 +31,7 @@ from wechatpy.exceptions import (
 )
 
 def check_user():
-    return session.get('user')
+    return session.get('user_token')
 
 def oauth_debug(scope='snsapi_base', state=None):
     """跳过微信登录，模拟用户"""
@@ -40,17 +40,7 @@ def oauth_debug(scope='snsapi_base', state=None):
         def wrapper(*args, **kwargs):
             user = check_user()
             if not user:
-                user_info = {
-                    u'province': u'\u4e0a\u6d77',
-                    u'openid': u'ounqqv9v06UwB3R-8B-12345678',
-                    u'headimgurl': u'http://wx.qlogo.cn/mmopen/hmGc93nKibSiaEmF8bmOIWicShAPU3aBtzOO6HMcjde6aIylD4O44NictNjshFn0tHoIvowKM0jwfJQqz1icuNfIicKnrOE0HiaU631/0',
-                    u'language': u'zh_CN',
-                    u'city': u'\u95f5\u884c',
-                    u'country': u'\u4e2d\u56fd',
-                    u'sex': 1,
-                    u'privilege': [],
-                    u'nickname': u'Frank'
-                }
+                user_info = Config["user_info"]
                 login_server(user_info)
 
             return method(*args, **kwargs)

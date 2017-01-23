@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from flask import render_template, session
+import flask
+from flask import render_template, session, request
 from client.wechat import oauth
 
 from client import app
 from client.config import Config
-from client.request_api import get_api
+from client.request_api import get_api, get_api_complete
 
 @app.route('/show/<int:anchorUid>', methods=['GET'])
 @oauth(scope="snsapi_userinfo")
@@ -13,7 +14,13 @@ def show(anchorUid):
     channel = get_api(Config["api"]["getSingleChannel"], None,
                         params={"anchorUid": anchorUid})
 
-    return render_template("show.html", channel=channel, user=session["user"])
+    giftList = get_api(Config["api"]["getGiftModels"], None,
+                       params={"token": session["user_token"]})
+
+    user = get_api(Config["api"]["getMyInfo"], None,
+                       params={"token": session["user_token"]})
+
+    return render_template("show.html", channel=channel, giftList=giftList, user=user)
 
 
 @app.route('/', methods=['GET'])
@@ -22,7 +29,26 @@ def index():
     channelList = get_api(Config["api"]["getChannels"], None,
                             params={"limit": 12, "offset": 0})
 
-    return render_template("index.html", channelList=channelList, user=session["user"])
+    user = get_api(Config["api"]["getMyInfo"], None,
+                   params={"token": session["user_token"]})
+
+    return render_template("index.html", channelList=channelList, user=user)
+
+
+@app.route('/api', methods=['POST'])
+@oauth(scope="snsapi_userinfo")
+def api():
+    params = request.form.to_dict()
+    action = params.get("action")
+    params.pop("action")
+    params["token"] = session["user_token"]
+    result = get_api_complete(Config["api"][action], None,
+                             params=params)
+
+    return flask.jsonify(**result)
+
+
+
 
 
 

@@ -1,0 +1,125 @@
+/*礼物面板*/
+
+.gift-title, .gift-info, .gift-action{
+    padding: .125rem .25rem;
+}
+
+/*百分比*/
+.gift-title {
+    height: 10%;
+}
+
+.gift-list {
+    height: 70%;
+    overflow: auto;
+}
+
+.gift-info {
+    height: 10%;
+}
+
+.gift-action {
+    height: 10%;
+}
+
+/*礼物title*/
+.gift-title h3{
+    float: left;
+    color: #ffb971;
+    font-size: 14px;
+}
+
+.gift-close {
+    float: right;
+}
+
+.gift-close img {
+    width: .4rem;
+    height: .4rem;
+}
+
+/*礼物列表*/
+.gift-list ul li {
+    float: left;
+    width: 3rem;
+    margin: 0 .125rem .3rem;
+    overflow: hidden;
+    vertical-align: top
+}
+
+.gift-list ul li.fix {
+    width: 10rem;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    padding: 0;
+    margin: 0
+}
+
+.gift-list ul li {
+    position: relative;
+    width: 3rem;
+    display: block;
+    text-align: center;
+}
+
+.gift-list ul li .gift-cover {
+    width: 3rem;
+    height: 2.25rem;
+    overflow: hidden
+}
+
+.gift-list ul li img {
+    width: 3rem;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+.gift-list ul li .gift-name {
+    display: block;
+    font-size: .32rem;
+    color: #424242;
+    padding: .106667rem .106667rem 0
+}
+
+.gift-list ul li a .gift-num {
+    text-align: center;
+    height: .533333rem;
+    font-size: .266667rem;
+    color: #999;
+    line-height: .533333rem
+}
+
+.gift-list ul li a .gift-num strong {
+    font-weight: 200
+}
+
+.gift-list ul li: active {
+    background-color: #eceeef
+}
+
+.gift-list li {
+    border: solid 2px #ffffff;
+}
+
+.gift-list .active {
+    border: solid 2px #ffb971;
+}
+
+.fix {
+    clear: both;
+}   
+
+/*余额*/
+.gift-info {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/*送出*/
+.gift-action {
+    font-weight: bold;
+    font-size: 14px;
+}

@@ -4,10 +4,7 @@
     margin: 0;
     box-sizing: border-box;
 
+    text-decoration: none;
     word-wrap: break-word;
     word-break: break-all;
-}
-
-a {
-	text-decoration: none;
 }

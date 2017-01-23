@@ -7,6 +7,7 @@ from config import Config
 
 app = Flask(__name__, static_url_path="")
 app.config["SECRET_KEY"] = Config["SECRET_KEY"]
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # 微信
 app.config["WECHAT_APPID"] = Config["wechat"]["WECHAT_APPID"]

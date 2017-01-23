@@ -7,9 +7,11 @@
     <meta name="identifier" content="{{user.username}}">
     <meta name="userSig" content="{{user.usersig}}">
     <meta name="headurl" content="{{user.avatarUrl}}">
+    <meta name="anchorUid" content="{{channel.anchorUid}}">
     <title>{{channel.anchorNickname}}的直播间</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/show.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gift.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome/css/font-awesome.min.css') }}">
 {% endblock %}
 
@@ -51,7 +53,7 @@
                     <div id="bt-send"><button class="video-discuss-button" onclick="onSendMsg()">发送</button></div>
                     <a href="javascript:void(0);" class="video-discuss-
                     face" onclick="showEmotionDialog()"></a>
-                    <div id="bt-gift" onclick="onShowGift()"></div>
+                    <div id="bt-gift"></div>
                     <div id="bt-tipping"></div>
                 </div>
                 <div class="v=ideo-discuss-emotion" id="video-discuss-emotion" style="display: none">
@@ -64,7 +66,39 @@
         </div>
 
         <div id="gift-panel">
-            
+            <div class="gift-title">
+                <h3>礼物</h3>
+                <a class="gift-close"><img src="{{url_for('static', filename='img/drop_out_hover.png')}}"></a>
+            </div>
+            <div class="gift-list fix">
+                <ul class="fix">
+                    {% for gift in giftList %}
+                    <li>
+                        <p style="display: none" class="giftModelId">{{gift.giftModelId}}</p>
+                        <div class="gift-cover">
+                            <img class="lazyimg" src="{{gift.iconUrl if gift.iconUrl | is_url else url_for('static', filename='img/app_icon.png')}}" alt="{{gift.title}}" />
+                        </div>
+                        <div class="gift-info">
+                            <p class="gift-name text-overflow">{{gift.title}}</p>
+                        </div>
+                        <p class="gift-num">
+                            <strong>{{gift.cost}}</strong>
+                        </p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="gift-info">
+                <span>余额：</span><strong id="user-coin">{{user.money}}</strong>
+            </div>
+
+            <div class="gift-action">
+                <span class="gift-action-tip">送出&nbsp;
+                <input type="number" value="1" name="count" class="gift-num">
+                <span>个</span>
+                <button>赠送</button>
+            </div>
         </div>
     </div>
 </div>
