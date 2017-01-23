@@ -10,7 +10,7 @@
 }
 
 .gift-list {
-    height: 70%;
+    height: 80%;
     overflow: auto;
 }
 
@@ -18,9 +18,6 @@
     height: 10%;
 }
 
-.gift-action {
-    height: 10%;
-}
 
 /*礼物title*/
 .gift-title h3{
@@ -113,13 +110,32 @@
 }   
 
 /*余额*/
-.gift-info {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-/*送出*/
 .gift-action {
     font-weight: bold;
     font-size: 14px;
+    display: table;
+    width: 100%;
+}
+
+.gift-action > div{
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle;
+}
+
+div.send-gift {
+    text-align: right;
+}
+
+.gift-action button {
+    font-size: 14px;
+    height: .693333rem;
+    line-height: .693333rem;
+    background-color: #fb631c;
+    color: #fff;
+    border-radius: .106667rem;
+    border: 0;
+    width: 1.493333rem;
+    -webkit-user-select: none;
+    user-select: none;
 }

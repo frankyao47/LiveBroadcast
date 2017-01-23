@@ -82,22 +82,16 @@
                             <p class="gift-name text-overflow">{{gift.title}}</p>
                         </div>
                         <p class="gift-num">
-                            <strong>{{gift.cost}}</strong>
+                            <strong>{{gift.cost | int}}</strong>
                         </p>
                     </li>
                     {% endfor %}
                 </ul>
             </div>
 
-            <div class="gift-info">
-                <span>余额：</span><strong id="user-coin">{{user.money}}</strong>
-            </div>
-
             <div class="gift-action">
-                <span class="gift-action-tip">送出&nbsp;
-                <input type="number" value="1" name="count" class="gift-num">
-                <span>个</span>
-                <button>赠送</button>
+                <div><span>余额：</span><strong id="user-coin">{{user.money | int}}</strong></div>
+                <div class="send-gift"><button>赠送</button></div>
             </div>
         </div>
     </div>

@@ -10,13 +10,10 @@ $(function() {
         $("#danmu-panel").show();
     });
 
-    $("#bt-gift").trigger("click");
-
     $(".gift-list li").click(function() {
         $(".gift-list li").removeClass("active");
         $(this).addClass("active");
         //enable submit button
-
     });
 
     $(".gift-action button").click(function() {
