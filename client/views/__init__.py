@@ -35,6 +35,15 @@ def index():
     return render_template("index.html", channelList=channelList, user=user)
 
 
+@app.route('/pay', methods=['GET'])
+@oauth(scope="snsapi_userinfo")
+def pay():
+    user = get_api(Config["api"]["getMyInfo"], None,
+                   params={"token": session["user"]["token"]})
+
+    return render_template("pay.html", user=user)
+
+
 @app.route('/api', methods=['POST'])
 @oauth(scope="snsapi_userinfo")
 def api():
