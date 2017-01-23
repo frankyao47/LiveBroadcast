@@ -15,12 +15,12 @@ def show(anchorUid):
                         params={"anchorUid": anchorUid})
 
     giftList = get_api(Config["api"]["getGiftModels"], None,
-                       params={"token": session["user_token"]})
+                       params={"token": session["user"]["token"]})
 
     user = get_api(Config["api"]["getMyInfo"], None,
-                       params={"token": session["user_token"]})
+                       params={"token": session["user"]["token"]})
 
-    return render_template("show.html", channel=channel, giftList=giftList, user=user)
+    return render_template("show.html", channel=channel, giftList=giftList, user=user, userSig = session["user"]["usersig"])
 
 
 @app.route('/', methods=['GET'])
@@ -30,7 +30,7 @@ def index():
                             params={"limit": 12, "offset": 0})
 
     user = get_api(Config["api"]["getMyInfo"], None,
-                   params={"token": session["user_token"]})
+                   params={"token": session["user"]["token"]})
 
     return render_template("index.html", channelList=channelList, user=user)
 
@@ -41,7 +41,7 @@ def api():
     params = request.form.to_dict()
     action = params.get("action")
     params.pop("action")
-    params["token"] = session["user_token"]
+    params["token"] = session["user"]["token"]
     result = get_api_complete(Config["api"][action], None,
                              params=params)
 

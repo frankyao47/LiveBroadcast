@@ -17,8 +17,8 @@ def login_server(user_info):
         "authority": 2 # 用户
     }
 
-    session["user_token"] = get_api(Config["api"]["authForWeixin"], None,
-                          params = params)["token"]
+    session["user"] = get_api(Config["api"]["authForWeixin"], None,
+                          params = params)
 
 # from flask-wechatpy, https://github.com/cloverstd/flask-wechatpy/blob/master/flask_wechatpy/__init__.py
 
@@ -31,7 +31,7 @@ from wechatpy.exceptions import (
 )
 
 def check_user():
-    return session.get('user_token')
+    return session.get('user')
 
 def oauth_debug(scope='snsapi_base', state=None):
     """跳过微信登录，模拟用户"""
