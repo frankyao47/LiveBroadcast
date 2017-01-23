@@ -8,11 +8,29 @@
 {% endblock %}
 
 {% block content %}
-<div>
-    <div>余额：<span>{{user.money | int}}</span></div>
-    <div>充值金额</div>
-    <div class="pay-action"><button onclick="callpay()">充值</button></div>
-</div>
+<div class="pay-panel">
+    <div class="pay-item">
+        <span class="pay-item-label">账户余额：</span>
+        <span>{{user.money | int}}</span>
+    </div>
+
+    <div class="pay-amount">
+        <div>充值金额</div>
+            <ul class="pay-amount-list">
+                <li data-amount="1">1元</li>
+                <li data-amount="5">5元</li>
+                <li data-amount="10">10元</li>
+                <li data-amount="50">50元</li>
+                <li data-amount="100">100元</li>
+                <li><input type="text" pattern="\d*" placeholder="其他"></li>
+            </ul>
+    </div>
+
+    <div class="pay-action">
+        <button onclick="callpay()">充值</button>
+    </div>
+
+</section>
 {% endblock %}
 
 {% block footer %}

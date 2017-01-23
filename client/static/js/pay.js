@@ -1,5 +1,5 @@
 wx.config({
-    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
     appId: "wx6b2f0442b415ffc8", // 必填，公众号的唯一标识
     timestamp: timestamp, // 必填，生成签名的时间戳
     nonceStr: noncestr, // 必填，生成签名的随机串
@@ -8,14 +8,13 @@ wx.config({
 });
 
 
-
 //调用微信JS api 支付
-function jsApiCall()
+function jsApiCall(amount)
 {
     $.post("/api", 
         {
             "action": "addPurchaseOrder",
-            "money": 1
+            "money": amount
         },
         function(data) {
             data = data.result;
@@ -35,7 +34,28 @@ function jsApiCall()
     
 }
 
+//点击充值
 function callpay()
 {
-     jsApiCall();
+    var item = $(".pay-amount-list li.active");
+
+    if (item.length == 1) {
+        var amount = item.data("amount");
+        if (!amount) {
+            amount = item.find("input").val();
+            amount = parseInt(amount, 10);
+        }
+
+        if (!isNaN(amount) && amount > 0) {
+            jsApiCall(amount);
+        }
+    }   
+
+    // jsApiCall();
 }
+
+//点击金额
+$(".pay-amount-list li").click(function() {
+    $(".pay-amount-list li").removeClass("active");
+    $(this).addClass("active");
+});
