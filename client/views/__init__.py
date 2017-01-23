@@ -35,13 +35,16 @@ def index():
     return render_template("index.html", channelList=channelList, user=user)
 
 
-@app.route('/pay', methods=['GET'])
+@app.route('/pay/', methods=['GET'])
 @oauth(scope="snsapi_userinfo")
 def pay():
     user = get_api(Config["api"]["getMyInfo"], None,
                    params={"token": session["user"]["token"]})
 
-    return render_template("pay.html", user=user)
+    signature = get_api(Config["api"]["getSignatureForJs"], None,
+                   params={"url": request.url})
+
+    return render_template("pay.html", user=user, signature=signature)
 
 
 @app.route('/api', methods=['POST'])

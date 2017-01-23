@@ -10,7 +10,7 @@ def get_api(url, headers, **kwargs):
     """
     API request
     """
-    default_headers = {"content-type": "application/json"}
+    default_headers = {"content-type": "application/json; charset=utf-8"}
     if headers is not None and isinstance(headers, dict):
         default_headers.update(headers)
     try:
