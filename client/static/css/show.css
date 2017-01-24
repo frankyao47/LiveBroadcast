@@ -77,6 +77,10 @@ div#video-discuss-like {
 }
 
 /*弹幕栏*/
+div#danmu-panel {
+    display: none;
+}
+
 div#video-discuss-msg {
     padding: 10px;
     overflow: auto;

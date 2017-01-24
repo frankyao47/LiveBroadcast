@@ -106,5 +106,10 @@ function onGroupInfoChangeNotify(groupInfo) {
 function showGroupSystemMsg(type, typeCh, group_id, group_name, msg_content, msg_time) {
     var sysMsgStr = "收到一条群系统消息: type=" + type + ", typeCh=" + typeCh + ",群ID=" + group_id + ", 群名称=" + group_name + ", 内容=" + msg_content + ", 时间=" + webim.Tool.formatTimeStamp(msg_time);
     webim.Log.warn(sysMsgStr);
-    alert(sysMsgStr);
+    if (type == 5) { //群被解散
+        show_offline_panel();
+    }
+    else {
+        alert(sysMsgStr);
+    }
 }

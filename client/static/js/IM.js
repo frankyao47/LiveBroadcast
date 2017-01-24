@@ -82,5 +82,15 @@ var options = {
 
 var curPlayAudio = null;
 var openEmotionFlag = false; //是否打开过表情
-sdkLogin();
+
+var isChannelOpen = getParamsFromMeta("ifOpen");
+
+if (isChannelOpen == "False") { //离线状态
+    show_offline_panel();
+}
+else {
+    show_danmu_panel();
+    sdkLogin();
+}
+
 
