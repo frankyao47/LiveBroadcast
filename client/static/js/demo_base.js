@@ -99,6 +99,7 @@ function applyJoinBigGroup(groupId) {
             //JoinedSuccess:加入成功; WaitAdminApproval:等待管理员审批
             if (resp.JoinedStatus && resp.JoinedStatus == 'JoinedSuccess') {
                 webim.Log.info('进群成功');
+                // sendJoinGroupMessage(); //发送进群消息，App端显示不对
                 selToID = groupId;
             } else {
                 alert('进群失败');
@@ -109,6 +110,50 @@ function applyJoinBigGroup(groupId) {
         }
     );
 }
+
+// //发送进群消息
+// function sendJoinGroupMessage() {
+//     //获取消息内容
+
+//     var msgtosend = {
+//         "userAction": 2,
+//         "userId": identifier, 
+//         "nickName": identifierNick, 
+//         "headPic": headurl,
+//         "msg": ""
+//     }
+
+//     var msgtosend = JSON.stringify(msgtosend);
+
+//     // var msgtosend = $("#send_msg_text").val();
+//     var msgLen = webim.Tool.getStrBytes(msgtosend);
+
+//     if (!selSess) {
+//         selSess = new webim.Session(selType, selToID, selToID, selSessHeadUrl, Math.round(new Date().getTime() / 1000));
+//     }
+//     var isSend = true;//是否为自己发送
+//     var seq = -1;//消息序列，-1表示sdk自动生成，用于去重
+//     var random = Math.round(Math.random() * 4294967296);//消息随机数，用于去重
+//     var msgTime = Math.round(new Date().getTime() / 1000);//消息时间戳
+//     var subType = webim.GROUP_MSG_SUB_TYPE.COMMON;;//消息子类型
+
+//     var msg = new webim.Msg(selSess, isSend, seq, random, msgTime, loginInfo.identifier, subType, loginInfo.identifierNick);
+//     //解析文本和表情
+//     var expr = /\[[^[\]]{1,3}\]/mg;
+//     var emotions = msgtosend.match(expr);
+//     var text_obj, face_obj, tmsg, emotionIndex, emotion, restMsgIndex;
+//     if (!emotions || emotions.length < 1) {
+//         text_obj = new webim.Msg.Elem.Text(msgtosend);
+//         msg.addText(text_obj);
+//     } 
+//     webim.sendMsg(msg, function (resp) {
+//         webim.Log.info("发消息成功");
+//     }, function (err) {
+//         webim.Log.error("发消息失败:" + err.ErrorInfo);
+//         // alert("发消息失败:" + err.ErrorInfo);
+//     });
+// }
+
 
 //显示消息（群普通+点赞+提示+红包）
 function showMsg(msg) {
@@ -209,11 +254,11 @@ function convertMsgtoHtml(msg) {
                     }
                     else if (userAction == 2) { //用户加入直播
                         msgParsed.subType = webim.GROUP_MSG_SUB_TYPE.TIP;
-                        msgParsed.body = nickName + "进入房间";
+                        msgParsed.body = nickName + " 进入房间";
                     }
                     else if (userAction == 3) { //用户退出直播
                         msgParsed.subType = webim.GROUP_MSG_SUB_TYPE.TIP;
-                        msgParsed.body = nickName + "离开房间";
+                        msgParsed.body = nickName + " 离开房间";
                     }
                     else { //4: 点赞，5: 弹幕
 
