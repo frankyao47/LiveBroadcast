@@ -83,7 +83,7 @@ function sdkLogin() {
             // initEmotionUL();//初始化表情
         },
         function (err) {
-            // alert(err.ErrorInfo);
+            alert(err.ErrorInfo);
         }
     );//
 }
@@ -106,6 +106,8 @@ function applyJoinBigGroup(groupId) {
             }
         },
         function (err) {
+            //主播已下线
+            alert("进群失败！")
             // alert(err.ErrorInfo);
         }
     );

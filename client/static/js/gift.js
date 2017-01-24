@@ -1,13 +1,11 @@
 $(function() {
     //打开/关闭礼物菜单
     $("#bt-gift").click(function() {
-        $("#gift-panel").show();
-        $("#danmu-panel").hide();
+        show_gift_panel();
     });
 
     $(".gift-close").click(function() {
-        $("#gift-panel").hide();
-        $("#danmu-panel").show();
+        show_danmu_panel();
     });
 
     $(".gift-list li").click(function() {

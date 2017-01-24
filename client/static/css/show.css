@@ -36,7 +36,7 @@ div#video-discuss-like {
     height: 10%;
 }
 
-div#danmu-panel, div#gift-panel {
+div#danmu-panel, div#gift-panel, div#offline-panel {
     height: 90%;
 }
 
@@ -180,4 +180,20 @@ li.msg-style-chat p {
 /*礼物栏*/
 #gift-panel {
     display: none;
+}
+
+
+/*离线栏*/
+#offline-panel {
+    display: none;
+}
+
+#offline-panel div {
+    width: 100%;
+    font-size: 28px;
+    /*font-weight: bold;*/
+    text-align: center;
+
+    padding-top: 20px;
+    color: #abadb1;
 }
