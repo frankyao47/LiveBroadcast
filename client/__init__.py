@@ -26,4 +26,9 @@ login_manager.init_app(app)
 def is_url(s):
     return str(s).startswith("http://")
 
+@app.template_filter('versioned')
+def versioned(s):
+    return s + "?ver=" + Config["version"]
+
+
 from views import *

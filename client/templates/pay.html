@@ -3,8 +3,8 @@
 {% block head %}
     <title>充值-群易播</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/pay.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pay.css') | versioned }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome/css/font-awesome.min.css') | versioned }}">
 {% endblock %}
 
 {% block content %}
@@ -30,7 +30,7 @@
         <button onclick="callpay()">充值</button>
     </div>
 
-</section>
+</div>
 {% endblock %}
 
 {% block footer %}
@@ -40,5 +40,5 @@
         var timestamp = {{signature.timestamp}};
     </script>
 	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/pay.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/pay.js') | versioned }}"></script>
 {% endblock %}

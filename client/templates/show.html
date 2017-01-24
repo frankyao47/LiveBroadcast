@@ -11,8 +11,8 @@
     <meta name="anchorUid" content="{{channel.anchorUid}}">
     <title>{{channel.anchorNickname}}的直播间</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/show.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/gift.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/show.css') | versioned }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gift.css') | versioned }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome/css/font-awesome.min.css') }}">
 {% endblock %}
 
@@ -127,11 +127,11 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/sdk/api.min.js') }}"></script>
 
 <!--webim demo js-->
-<script type="text/javascript" src="{{ url_for('static', filename='js/demo_base.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/demo_group_notice.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/demo_base.js') | versioned }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/demo_group_notice.js') | versioned }}"></script>
 
-<script type="text/javascript" src="{{ url_for('static', filename='js/show.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/player.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/IM.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/gift.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/show.js') | versioned }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/player.js') | versioned }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/IM.js') | versioned }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/gift.js') | versioned }}"></script>
 {% endblock %}
