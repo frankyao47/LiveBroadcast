@@ -17,8 +17,8 @@ def login_server(user_info):
         "authority": 2 # 用户
     }
 
-    session["user"] = get_api(Config["api"]["authForWeixin"], None,
-                          params = params)
+    session["user"] = get_api(Config["api"]["authForWeixin"],
+                          data = params)
 
 # from flask-wechatpy, https://github.com/cloverstd/flask-wechatpy/blob/master/flask_wechatpy/__init__.py
 

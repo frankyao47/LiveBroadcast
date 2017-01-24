@@ -11,14 +11,14 @@ from client.request_api import get_api, get_api_complete
 @app.route('/show/<int:anchorUid>', methods=['GET'])
 @oauth(scope="snsapi_userinfo")
 def show(anchorUid):
-    channel = get_api(Config["api"]["getSingleChannel"], None,
-                        params={"anchorUid": anchorUid})
+    channel = get_api(Config["api"]["getSingleChannel"],
+                        data={"anchorUid": anchorUid})
 
-    giftList = get_api(Config["api"]["getGiftModels"], None,
-                       params={"token": session["user"]["token"]})
+    giftList = get_api(Config["api"]["getGiftModels"],
+                       data={"token": session["user"]["token"]})
 
-    user = get_api(Config["api"]["getMyInfo"], None,
-                       params={"token": session["user"]["token"]})
+    user = get_api(Config["api"]["getMyInfo"],
+                       data={"token": session["user"]["token"]})
 
     return render_template("show.html", channel=channel, giftList=giftList, user=user, userSig = session["user"]["usersig"])
 
@@ -26,11 +26,11 @@ def show(anchorUid):
 @app.route('/', methods=['GET'])
 @oauth(scope="snsapi_userinfo")
 def index():
-    channelList = get_api(Config["api"]["getChannels"], None,
-                            params={"limit": 12, "offset": 0})
+    channelList = get_api(Config["api"]["getChannels"],
+                            data={"limit": 12, "offset": 0})
 
-    user = get_api(Config["api"]["getMyInfo"], None,
-                   params={"token": session["user"]["token"]})
+    user = get_api(Config["api"]["getMyInfo"],
+                   data={"token": session["user"]["token"]})
 
     return render_template("index.html", channelList=channelList, user=user)
 
@@ -38,11 +38,11 @@ def index():
 @app.route('/pay/', methods=['GET'])
 @oauth(scope="snsapi_userinfo")
 def pay():
-    user = get_api(Config["api"]["getMyInfo"], None,
-                   params={"token": session["user"]["token"]})
+    user = get_api(Config["api"]["getMyInfo"],
+                   data={"token": session["user"]["token"]})
 
-    signature = get_api(Config["api"]["getSignatureForJs"], None,
-                   params={"url": request.url})
+    signature = get_api(Config["api"]["getSignatureForJs"],
+                   data={"url": request.url})
 
     return render_template("pay.html", user=user, signature=signature)
 
@@ -54,8 +54,8 @@ def api():
     action = params.get("action")
     params.pop("action")
     params["token"] = session["user"]["token"]
-    result = get_api_complete(Config["api"][action], None,
-                             params=params)
+    result = get_api_complete(Config["api"][action],
+                             data=params)
 
     return flask.jsonify(**result)
 
