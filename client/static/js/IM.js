@@ -8,6 +8,7 @@ var sdkAppID = 1400021877;
 var accountType = 9480;
 var avChatRoomId = getParamsFromMeta("groupId");
 var identifier = getParamsFromMeta("identifier");
+var identifierNick = getParamsFromMeta("identifierNick");
 var userSig = getParamsFromMeta("userSig");
 var headurl = getParamsFromMeta("headurl");
 var selType = webim.SESSION_TYPE.GROUP; //广播/私聊
@@ -22,7 +23,7 @@ var loginInfo = {
     'appIDAt3rd': sdkAppID, //用户所属应用id，必填
     'accountType': accountType, //用户所属应用帐号类型，必填
     'identifier': identifier, //当前用户ID,必须是否字符串类型，选填
-    'identifierNick': identifier, //当前用户昵称，选填
+    'identifierNick': identifierNick, //当前用户昵称，选填
     'userSig': userSig, //当前用户身份凭证，必须是字符串类型，选填
     'headurl': headurl  //当前用户默认头像，选填
 };

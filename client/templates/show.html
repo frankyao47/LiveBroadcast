@@ -5,6 +5,7 @@
     <meta name="hls" content="{{channel.playUrlForHls}}">
     <meta name="groupId" content="{{channel.groupId}}">
     <meta name="identifier" content="{{user.username}}">
+    <meta name="identifierNick" content="{{user.nickname}}">
     <meta name="userSig" content="{{userSig}}">
     <meta name="headurl" content="{{user.avatarUrl}}">
     <meta name="anchorUid" content="{{channel.anchorUid}}">
@@ -51,17 +52,17 @@
                 <div class="video-discuss-form" id="video-discuss-form">
                     <div id="msg-input"><input type="text" class="video-discuss-input" placeholder="跟主播打个招呼吧~" id="send_msg_text"></div>
                     <div id="bt-send"><button class="video-discuss-button" onclick="onSendMsg()">发送</button></div>
-                    <a href="javascript:void(0);" class="video-discuss-
-                    face" onclick="showEmotionDialog()"></a>
+                    <!-- <a href="javascript:void(0);" class="video-discuss-
+                    face" onclick="showEmotionDialog()"></a> -->
                     <div id="bt-gift"></div>
                     <div id="bt-tipping"></div>
                 </div>
-                <div class="v=ideo-discuss-emotion" id="video-discuss-emotion" style="display: none">
+                <!-- <div class="v=ideo-discuss-emotion" id="video-discuss-emotion" style="display: none">
                     <div class="video-emotion-pane">
                         <ul id="emotionUL">
                         </ul>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
