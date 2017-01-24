@@ -41,8 +41,11 @@ $(function() {
                 }
             });
         }
+    });
 
-        
+    //跳转到充值页面
+    $("#bt-tipping").click(function() {
+        location.href = "/pay";
     });
 })
 
