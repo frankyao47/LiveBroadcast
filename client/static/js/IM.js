@@ -1,7 +1,3 @@
-function getParamsFromMeta(name) {
-    return $('meta[name=' + name + ']').attr("content");
-}
-
 //独立模式，应用名称
 var accountMode = 0;
 var sdkAppID = 1400021877;

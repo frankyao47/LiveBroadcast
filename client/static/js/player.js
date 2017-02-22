@@ -1,7 +1,3 @@
-function getParamsFromMeta(name) {
-    return $('meta[name=' + name + ']').attr("content");
-}
-
 //url中获取播放器参数
 var rtmp = getParamsFromMeta('rtmp'),
     hls = getParamsFromMeta('hls'),

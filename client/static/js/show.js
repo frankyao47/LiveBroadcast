@@ -15,3 +15,4 @@ function show_offline_panel() {
     $("#danmu-panel").hide();
     $("#gift-panel").hide();
 }
+

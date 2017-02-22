@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <meta name="next" content="{{next}}">
+    <meta name="cost" content="{{cost}}">
+    <meta name="money" content="{{money}}">
+    <meta name="anchorUid" content="{{channel.anchorUid}}">
+    <title>{{channel.anchorNickname}}的直播间</title>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block footer %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/remind_pay.js') | versioned }}"></script>
+{% endblock %}

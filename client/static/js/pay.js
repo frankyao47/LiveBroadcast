@@ -26,8 +26,9 @@ function jsApiCall(amount)
                 paySign: data.paySign, // 支付签名
                 appId: data.appId,
                 success: function (res) {
-                    Msgbox.dialog("支付成功");
-                    location.href = "/";
+                    Msgbox.dialog("支付成功", function() {
+                        location.href = "/";
+                    });
                 }
             });
         });

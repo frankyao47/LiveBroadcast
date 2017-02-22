@@ -12,7 +12,7 @@ from client.request_api import get_api, get_api_complete
 @oauth(scope="snsapi_userinfo")
 def show(anchorUid):
     channel = get_api(Config["api"]["getSingleChannel"],
-                        data={"anchorUid": anchorUid})
+                        data={"anchorUid": anchorUid, "token": session["user"]["token"]})
 
     giftList = get_api(Config["api"]["getGiftModels"],
                        data={"token": session["user"]["token"]})
@@ -20,8 +20,11 @@ def show(anchorUid):
     user = get_api(Config["api"]["getMyInfo"],
                        data={"token": session["user"]["token"]})
 
-    return render_template("show.html", channel=channel, giftList=giftList, user=user, userSig = session["user"]["usersig"])
-
+    cost, ifPay = channel["cost"], channel["ifPay"]
+    if cost < 1 or ifPay: # 直播间免费or用户已付费
+        return render_template("show.html", channel=channel, giftList=giftList, user=user, userSig = session["user"]["usersig"])
+    else:
+        return render_template("remind_pay.html", channel=channel, next=request.url, cost=cost, money=user["money"])
 
 @app.route('/', methods=['GET'])
 @oauth(scope="snsapi_userinfo")
