@@ -20,8 +20,8 @@ def show(anchorUid):
     user = get_api(Config["api"]["getMyInfo"],
                        data={"token": session["user"]["token"]})
 
-    cost, ifPay = channel["cost"], channel["ifPay"]
-    if cost < 1 or ifPay: # 直播间免费or用户已付费
+    cost, ifPay, isChannelOpen = channel["cost"], channel["ifPay"], channel["ifOpen"]
+    if (cost < 1 or ifPay) and isChannelOpen: # （直播间免费or用户已付费）and直播间在直播中
         return render_template("show.html", channel=channel, giftList=giftList, user=user, userSig = session["user"]["usersig"])
     else:
         return render_template("remind_pay.html", channel=channel, next=request.url, cost=cost, money=user["money"])

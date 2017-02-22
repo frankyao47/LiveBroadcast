@@ -2,8 +2,14 @@ cost = parseInt(getParamsFromMeta("cost"));
 money = parseInt(getParamsFromMeta("money"));
 next = getParamsFromMeta("next");
 anchorUid = getParamsFromMeta("anchorUid");
+isChannelOpen = getParamsFromMeta("ifOpen");
 
-if (cost < money) {
+if (isChannelOpen == "False") {
+    Msgbox.dialog("直播未开始!", function() {
+        location.href = "/";
+    });
+}
+else if (cost < money) {
     msg = "当前直播需要支付" + cost +"金币后才可以观看，是否支付？（现有金币：" + money + "）"
     Msgbox.confirm(
         msg,
