@@ -30,12 +30,12 @@ $(function() {
             },
             function(data) {
                 if (data.errno != 0 || data.result == false) {
-                    alert("赠送失败!");
+                    Msgbox.dialog("赠送失败!");
                 }
                 else {
                     var last_coin = parseFloat($("#user-coin").text());
                     $("#user-coin").text(last_coin - cost);
-                    alert("赠送成功!");
+                    Msgbox.dialog("赠送成功!");
                 }
             });
         }
