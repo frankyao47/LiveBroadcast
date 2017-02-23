@@ -10,12 +10,12 @@
 {% block content %}
 <div class="pay-panel">
     <div class="pay-item">
-        <span class="pay-item-label">账户余额：</span>
+        <span class="pay-item-label">金币余额：</span>
         <span>{{user.money | int}}</span>
     </div>
 
     <div class="pay-amount">
-        <div>充值金额</div>
+        <div>充值金额<span class="pay-ratio">（1元=1金币）</span></div>
             <ul class="pay-amount-list">
                 <li data-amount="1">1元</li>
                 <li data-amount="5">5元</li>

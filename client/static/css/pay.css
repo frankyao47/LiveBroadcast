@@ -16,6 +16,11 @@
 }
 
 /*充值金额*/
+.pay-ratio {
+    font-size: 14px;
+    color: #666;
+}
+
 .pay-amount-list {
     margin: 0 -.266667rem;
     font-size: .373333rem;
@@ -47,12 +52,13 @@
 
 /*点击*/
 .pay-amount-list li.active {
-    border-color: #ffb971;
-    color: #ffb971;
+    border-color: #34bf49;
+    color: #34bf49;
+    border-width: 2px;
 }
 
 .pay-amount-list li.active input {
-    color: #ffb971;
+    color: #34bf49;
 }
 
 
