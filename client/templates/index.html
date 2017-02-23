@@ -9,7 +9,7 @@
 
 {% block content %}
 <div>
-    <h2 class="recommend">主播推荐</h2>
+    <h2 class="recommend">直播推荐</h2>
     <section class="star-list fix">
         <ul class="fix">
             {% for channel in channelList %}
@@ -22,9 +22,9 @@
                     </div>
                     <div class="star-info">
                         <p class="star-nickname text-overflow">{{channel.title}}</p>
-                        <p class="star-num">
-                            <i class="iconfont fa fa-heart-o"></i><strong>{{channel.likeCount}}</strong>
-                        </p>
+                        <!--<p class="star-num">-->
+                            <!--<i class="iconfont fa fa-heart-o"></i><strong>{{channel.likeCount}}</strong>-->
+                        <!--</p>-->
                     </div>
                 </a>
             </li>

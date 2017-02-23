@@ -98,3 +98,13 @@ h2.recommend {
 .star-list ul li a: active {
     background-color: #eceeef
 }
+
+/*处理名字过长*/
+.text-overflow {
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+}

@@ -32,7 +32,7 @@
         <!--点赞-->
         <div id="video-discuss-like">
             <div>弹幕区</div>
-            <div id="like-button"><i class="fa fa-heart"></i><span>{{channel.likeCount}}</span></div>
+            <!--<div id="like-button"><i class="fa fa-heart"></i><span>{{channel.likeCount}}</span></div>-->
         </div>
 
         <div id="danmu-panel">
@@ -97,7 +97,7 @@
                             <p class="gift-name text-overflow">{{gift.title}}</p>
                         </div>
                         <p class="gift-num">
-                            <strong>{{gift.cost | int}}</strong>
+                            <strong>{{gift.cost | int}}金币</strong>
                         </p>
                     </li>
                     {% endfor %}
@@ -105,7 +105,7 @@
             </div>
 
             <div class="gift-action">
-                <div><span>余额：</span><strong id="user-coin">{{user.money | int}}</strong></div>
+                <div><span>金币余额：</span><strong id="user-coin">{{user.money | int}}</strong></div>
                 <div class="send-gift"><button>赠送</button></div>
             </div>
         </div>
