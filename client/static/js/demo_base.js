@@ -224,7 +224,7 @@ function showMsg(msg) {
     li.appendChild(contentP);
     
     var ul = document.getElementById("video-msg-list");
-    ul.append(li);
+    ul.appendChild(li);
 
     $("#video-discuss-msg").animate({
         scrollTop: $("#video-discuss-msg").get(0).scrollHeight}, 2000); 
