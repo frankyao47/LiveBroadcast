@@ -35,7 +35,9 @@ $(function() {
                 else {
                     var last_coin = parseFloat($("#user-coin").text());
                     $("#user-coin").text(last_coin - cost);
-                    Msgbox.dialog("赠送成功!");
+                    Msgbox.dialog("赠送成功!", function() {
+                        show_danmu_panel();
+                    });
                 }
             });
         }

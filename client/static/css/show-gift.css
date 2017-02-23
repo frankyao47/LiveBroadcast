@@ -10,12 +10,12 @@
 }
 
 .gift-list {
-    height: 80%;
+    height: 75%;
     overflow: auto;
 }
 
-.gift-info {
-    height: 10%;
+.gift-action {
+    height: 15%;
 }
 
 
@@ -112,12 +112,13 @@
 /*余额*/
 .gift-action {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     display: table;
     width: 100%;
 }
 
 .gift-action > div{
+    padding-left: .106667rem;
     display: table-cell;
     width: 50%;
     vertical-align: middle;
@@ -128,14 +129,14 @@ div.send-gift {
 }
 
 .gift-action button {
-    font-size: 14px;
-    height: .693333rem;
+    font-size: 16px;
+    height: .893333rem;
     line-height: .693333rem;
     background-color: #ffb971;
     color: #fff;
     border-radius: .106667rem;
     border: 0;
-    width: 1.493333rem;
+    width: 1.693333rem;
     -webkit-user-select: none;
     user-select: none;
 }
