@@ -32,13 +32,20 @@ var options = {
 player = new TcPlayer('video-container', options);
 console.log(player);
 
+var closeFullScreenTime = (new Date()).getTime(); //全屏恢复后防误触
+var lastScreenState = 0;
+
 //全屏后关闭弹幕
 function checkFullScreen() {
     if (player.fullscreen()) {
         $(".video-pane-body").hide();
+        lastScreenState = 1;
     }
     else {
         $(".video-pane-body").show();
+        if (lastScreenState == 1) //全屏恢复那一周期
+            closeFullScreenTime = (new Date()).getTime();
+        lastScreenState = 0;
     }
     setTimeout(function() { checkFullScreen(); }, 50);
 }

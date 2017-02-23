@@ -45,7 +45,9 @@ $(function() {
 
     //跳转到充值页面
     $("#bt-tipping").click(function() {
-        location.href = "/pay";
+        var currentTime = (new Date()).getTime();
+        if (currentTime - closeFullScreenTime > 1000)
+            location.href = "/pay";
     });
 })
 
