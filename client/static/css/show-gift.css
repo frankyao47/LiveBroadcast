@@ -77,11 +77,12 @@
 .gift-list ul li .gift-name {
     display: block;
     font-size: .32rem;
+    font-family: "微软雅黑";
     color: #424242;
     padding: .106667rem .106667rem 0
 }
 
-.gift-list ul li a .gift-num {
+.gift-list ul li .gift-num {
     text-align: center;
     height: .533333rem;
     font-size: .266667rem;
@@ -89,7 +90,7 @@
     line-height: .533333rem
 }
 
-.gift-list ul li a .gift-num strong {
+.gift-list ul li .gift-num strong {
     font-weight: 200
 }
 

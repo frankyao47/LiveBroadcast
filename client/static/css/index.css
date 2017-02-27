@@ -60,6 +60,7 @@ h2.recommend {
 .star-list ul li a .star-nickname {
     display: block;
     font-size: .32rem;
+    font-family: "微软雅黑";
     color: #424242;
     padding: .106667rem .106667rem 0
 }
